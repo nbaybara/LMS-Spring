@@ -1,2 +1,2 @@
 # LMS-Spring
-Library Managament system wşth Spring JPA Thymeleaf
+Library Managament system with Spring JPA Thymeleaf
