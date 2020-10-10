@@ -27,10 +27,13 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public BookDto save(BookDto book) {
-        Book bookDb = modelMapper.map(book, Book.class); //Verileri eşleştirdi
-        bookDb = bookRepository.save(bookDb); //Veritabanına kaydet
-        return modelMapper.map(bookDb, BookDto.class);
+    public List<Book> findAllBooks() {
+        return bookRepository.findAll();
+    }
+
+    @Override
+    public Book save(Book book) {
+        return bookRepository.save(book);
     }
 
     @Override
@@ -39,7 +42,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Page<BookDto> getAllPageable(Pageable pageable) {
+    public Page<Book> getAllPageable(Pageable pageable) {
         return null;
     }
 

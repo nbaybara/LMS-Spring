@@ -14,7 +14,6 @@ public class LibraryManagementApplication {
 	}
 	@Bean
 	public ModelMapper getModelMapper(){
-
 		ModelMapper modelMapper = new ModelMapper();
 		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 		return  new ModelMapper();

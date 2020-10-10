@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Add Book</title>
+</head>
+<body>
+<div class="container">
+    <hr>
+    <p class="h4 mb-4">Save Book</p>
+    <div class="card">
+        <div class="card-body">
+            <div class="col-md-10">
+                <form action="#" th:action="@{add-book}" th:object="${book}" method="post">
+                    <div class="row">
+                        <div class="form-group col-md-8">
+                            <label for="isbn" class="col-for-label">ISBN</label>
+                            <input type="text" th:field="*{isbn}" class="form-control" id="isbn" placeholder="ISBN"/>
+                            <span th:if="${#fields.hasErrors('isbn')}" th:errors="*{isbn}"></span>
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label for="name" class="col-for-label">Book Name</label>
+                            <input type="text" th:field="*{name}" class="form-control" id="name"
+                                   placeholder="Book Name"/>
+                            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label for="sub_name" class="col-for-label">Subname</label>
+                            <input type="text" th:field="*{sub_name}" class="form-control" id="sub_name"
+                                   placeholder="Subname"/>
+                            <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label for="description" class="col-for-label">Description</label>
+                            <input type="text" th:field="*{description}" class="form-control" id="description"
+                                   placeholder="Description"/>
+                            <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label for="serial_name" class="col-for-label">Book Serial Name</label>
+                            <input type="text" th:field="*{serial_name}" class="form-control" id="serial_name"
+                                   placeholder="Serial Name"/>
+                            <span th:if="${#fields.hasErrors('serial_name')}" th:errors="*{serial_name}"></span>
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label for="author" class="col-for-label">Author</label>
+                            <select th:field="*{authors}" class="form-control">
+                                <option th:each="author: ${authors}" th:value="${author.id}"
+                                        th:text="${author.n_sname}"></option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label for="publisher" class="col-form-label">Publisher</label>
+                            <select th:field="*{publishers}" class="form-control">
+                                <option th:each="publisher: ${publishers}" th:value="${publisher.id}"
+                                        th:text="${publisher.name}"></option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="submit" class="btn btn-info col-4" value="Submit">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

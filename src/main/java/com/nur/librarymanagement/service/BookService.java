@@ -1,20 +1,20 @@
 package com.nur.librarymanagement.service;
 
 import com.nur.librarymanagement.dto.BookDto;
+import com.nur.librarymanagement.entity.Book;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
 public interface BookService {
-    BookDto save(BookDto book);
+    public List<Book> findAllBooks();
+    Book save(Book book);
 
     BookDto getById(Long id);
 
-
-    Page<BookDto> getAllPageable(Pageable pageable);
+    Page<Book> getAllPageable(Pageable pageable);
 
     Boolean delete(BookDto book);
 

@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <intercept-url pattern="/*" access="permitAll"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Add Author</title>
+</head>
+<body>
+<div class="container">
+    <hr>
+    <p class="h4 mb-4"> Save Author</p>
+    <div class="card">
+        <div class="card-body">
+            <div class="col-md-10">
+                <form action="#" th:action="@{add-author}" th:object="${author}" method="post">
+                    <div class="row">
+                        <div class="form-group col-md-8">
+                            <label for="n_sname" class="col-for-label">Name Surname</label>
+                            <input type="text" th:field="*{n_sname}" class="form-control" id="n_sname"
+                                   placeholder="Author Name"/>
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label for="description" class="col-for-label">Descriptipn</label>
+                            <input type="text" th:field="*{description}" class="form-control" id="description"
+                                   placeholder="Description"/>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="submit" class="btn btn-info col-4" value="Submit">
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

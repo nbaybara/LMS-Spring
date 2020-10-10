@@ -1,38 +1,61 @@
 package com.nur.librarymanagement.entity;
 
-import javax.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
-@Table(name = "book")
+@Table(name = "books")
 public class Book {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "book_name", length = 4000)
-    private String bookName;
-    @Column(name = "sub_name", length = 1000)
-    private String sub_name;
-    @Column(name = "series_name", length = 1000)
-    private String series_name;
-
-    @JoinColumn(name = "authorial_book_id")
-    @ManyToOne(optional = true, fetch = FetchType.LAZY)
-    private Book authorial;
-
-    @JoinColumn(name = "assignee_book_id")
-    @ManyToOne(optional = true, fetch = FetchType.LAZY)
-    private Publisher assigne;
-
-    @Column(name = "isbn", length = 1000)
+    @Column(name = "isbn", length =50, nullable = false, unique = true )
     private String isbn;
-    @Column(name = "description", length = 1000)
+    @Column(name = "name", length = 1000,nullable = false)
+    private String name;
+    @Column(name = "sub_name", length = 50,nullable = false)
+    private String sub_name;
+    @Column(name = "serial_name", length = 50,nullable = false)
+    private String serial_name;
+
+    @Column(name = "description", length =250,nullable = false)
     private String description;
 
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "books_publishers", joinColumns = {@JoinColumn(name = "book_id")}, inverseJoinColumns = {
+            @JoinColumn(name = "publisher_id")})
+    private Set<Publisher> publishers = new HashSet<Publisher>();
 
+    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE })
+    @JoinTable(name = "books_authors", joinColumns = { @JoinColumn(name = "book_id") }, inverseJoinColumns = {
+            @JoinColumn(name = "author_id") })
+    private Set<Author> authors = new HashSet<Author>();
 
-
+    public Book(String bookName, String sub_name, String serial_name, String isbn, String description) {
+        this.name = bookName;
+        this.sub_name = sub_name;
+        this.serial_name = serial_name;
+        this.isbn = isbn;
+        this.description = description;
+    }
+    public void addAuthors(Author author) {
+        this.authors.add(author);
+        author.getBooks().add(this);
+    }
+    public void addPublishers(Publisher publisher) {
+        this.publishers.add(publisher);
+        publisher.getBooks().add(this);
+    }
 
 
 }
