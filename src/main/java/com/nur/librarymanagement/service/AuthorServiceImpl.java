@@ -1,14 +1,17 @@
 package com.nur.librarymanagement.service;
 
+import com.nur.librarymanagement.dto.AuthorDto;
 import com.nur.librarymanagement.entity.Author;
 import com.nur.librarymanagement.entity.Publisher;
 import com.nur.librarymanagement.repository.AuthorRepository;
 import com.nur.librarymanagement.util.TPage;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Slf4j
 @Service
 public class AuthorServiceImpl implements AuthorService {
     private final AuthorRepository authorRepository;
@@ -20,9 +23,11 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public void save(Author author) {
-
-         authorRepository.save(author);
+    public AuthorDto save(AuthorDto author) {
+        Author p = modelMapper.map(author, Author.class);
+        p = authorRepository.save(p);
+        author.setId(p.getId());
+        return author;
     }
 
     @Override
@@ -49,6 +54,7 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public Author update(Long id, Author author) {
+        log.info("update");
         Author authorDb = authorRepository.getOne(id);
         if(authorDb==null){
             throw  new IllegalArgumentException("Author doesnt exit");

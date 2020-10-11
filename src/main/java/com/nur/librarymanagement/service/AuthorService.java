@@ -1,9 +1,10 @@
 package com.nur.librarymanagement.service;
+import com.nur.librarymanagement.dto.AuthorDto;
 import com.nur.librarymanagement.entity.Author;
 
 
 public interface AuthorService {
-    public void save(Author author);
+    AuthorDto save(AuthorDto author);
 
     Author getById(Long id);
 

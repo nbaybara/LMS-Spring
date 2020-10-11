@@ -14,16 +14,16 @@
 <body>
 <div class="container">
     <hr>
-    <p class="h4 mb-4"> Save Publisher</p>
+    <p class="h4 mb-4">Update Author</p>
     <div class="card">
         <div class="card-body">
             <div class="col-md-10">
-                <form action="#" th:action="@{add-publisher}" th:object="${publisherDto}" method="post">
+                <form action="#" th:action="@{/api/author/update-author/{id}(id=${author.id})}" th:object="${author}" method="post">
                     <div class="row">
                         <div class="form-group col-md-8">
-                            <label for="name" class="col-for-label">Name Surname</label>
-                            <input type="text" th:field="*{name}" class="form-control" id="name"
-                                   placeholder="Publisher Name"/>
+                            <label for="n_sname" class="col-for-label">Name Surname</label>
+                            <input type="text" th:field="*{n_sname}" class="form-control" id="n_sname"
+                                   placeholder="Author Name"/>
                         </div>
                         <div class="form-group col-md-8">
                             <label for="description" class="col-for-label">Description</label>
@@ -31,7 +31,7 @@
                                    placeholder="Description"/>
                         </div>
                         <div class="col-md-6">
-                            <input type="submit" class="btn btn-info col-4" value="Submit">
+                            <input type="submit" class="btn btn-info col-4" value="UPDATE">
                         </div>
                     </div>
                 </form>

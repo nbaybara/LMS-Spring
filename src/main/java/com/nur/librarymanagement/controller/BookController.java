@@ -45,21 +45,20 @@ public class BookController {
         return "list-books";
     }
 
-    @GetMapping("/form-add")
+    @RequestMapping("/form-add")
     public String showCreateForm(Book book, Model model) {
         model.addAttribute("authors", authorServiceImpl.getAll());
         model.addAttribute("publishers", publisherServiceImpl.getAll());
         return "add-book";
     }
-
     @PostMapping("/add-book")
     public String createBook(Book book, BindingResult result, Model model) {
         log.info("deneme");
         if (result.hasErrors()) {
             return result.toString();
         }
-        bookService.save(book);
-        model.addAttribute("book", bookService.findAllBooks());
+        bookServiceImpl.save(book);
+        model.addAttribute("book", bookServiceImpl.save(book));
         return "redirect:api/book/list";
     }
 

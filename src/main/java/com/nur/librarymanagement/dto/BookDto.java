@@ -1,13 +1,15 @@
 package com.nur.librarymanagement.dto;
 
+import com.nur.librarymanagement.entity.Author;
+import com.nur.librarymanagement.entity.Publisher;
 import com.sun.istack.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class BookDto {
 
     private Long id;
@@ -18,6 +20,8 @@ public class BookDto {
     private String serial_name;
     private String description;
     private String sub_name;
+    private Publisher publisher;
+    private Author author;
 
 
 }

@@ -19,16 +19,16 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "isbn", length =50, nullable = false, unique = true )
+    @Column(name = "isbn", length =50, unique = true )
     private String isbn;
-    @Column(name = "name", length = 1000,nullable = false)
+    @Column(name = "name", length = 1000)
     private String name;
-    @Column(name = "sub_name", length = 50,nullable = false)
+    @Column(name = "sub_name", length = 50)
     private String sub_name;
-    @Column(name = "serial_name", length = 50,nullable = false)
+    @Column(name = "serial_name", length = 50)
     private String serial_name;
 
-    @Column(name = "description", length =250,nullable = false)
+    @Column(name = "description", length =250)
     private String description;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
