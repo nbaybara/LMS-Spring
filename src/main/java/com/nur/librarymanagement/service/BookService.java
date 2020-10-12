@@ -12,11 +12,13 @@ public interface BookService {
     public List<Book> findAllBooks();
     Book save(Book book);
 
-    BookDto getById(Long id);
+    Book  getById(Long id);
+
+    public List<Book> searchBooks(String keyword);
 
     Page<Book> getAllPageable(Pageable pageable);
 
-    Boolean delete(BookDto book);
+    Boolean delete(Long id );
 
-    BookDto update(Long id, BookDto book);
+    Book update(Long id, Book book);
 }

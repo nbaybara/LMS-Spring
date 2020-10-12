@@ -1,9 +1,10 @@
-package com.nur.librarymanagement.service;
+package com.nur.librarymanagement.service.implementation;
 
 import com.nur.librarymanagement.dto.AuthorDto;
 import com.nur.librarymanagement.entity.Author;
 import com.nur.librarymanagement.entity.Publisher;
 import com.nur.librarymanagement.repository.AuthorRepository;
+import com.nur.librarymanagement.service.AuthorService;
 import com.nur.librarymanagement.util.TPage;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
@@ -36,8 +37,6 @@ public class AuthorServiceImpl implements AuthorService {
         return authorRepository.getOne(id);
     }
 
-
-
     @Override
     public Boolean delete(Author author) {
         return null;
@@ -54,7 +53,6 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public Author update(Long id, Author author) {
-        log.info("update");
         Author authorDb = authorRepository.getOne(id);
         if(authorDb==null){
             throw  new IllegalArgumentException("Author doesnt exit");

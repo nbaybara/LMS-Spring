@@ -1,4 +1,4 @@
-package com.nur.librarymanagement.service;
+package com.nur.librarymanagement.service.implementation;
 
 import com.nur.librarymanagement.dto.AuthorDto;
 import com.nur.librarymanagement.dto.BookDto;
@@ -8,10 +8,13 @@ import com.nur.librarymanagement.entity.Book;
 import com.nur.librarymanagement.entity.Publisher;
 import com.nur.librarymanagement.repository.BookRepository;
 import com.nur.librarymanagement.repository.PublisherRepository;
+import com.nur.librarymanagement.service.BookService;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
 import java.util.List;
@@ -37,8 +40,17 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public BookDto getById(Long id) {
-        return null;
+    public Book getById(Long id) {
+        return bookRepository.getOne(id);
+    }
+
+    @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
+    @Override
+    public List<Book> searchBooks(String keyword) {
+        if (keyword != null) {
+            return bookRepository.search(keyword);
+        }
+        return bookRepository.findAll();
     }
 
     @Override
@@ -47,17 +59,27 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Boolean delete(BookDto book) {
+    public Boolean delete(Long id) {
+        bookRepository.deleteById(id);
         return null;
     }
 
     @Override
-    public BookDto update(Long id, BookDto book) {
-        return null;
+    public Book update(Long id, Book book) {
+        Book bookDb = bookRepository.getOne(id);
+        if(bookDb==null){
+            throw  new IllegalArgumentException("Author doesnt exit");
+        }
+        bookDb.setName(book.getName());
+        bookDb.setIsbn(book.getIsbn());
+        bookDb.setDescription(book.getDescription());
+        bookDb.setSub_name(book.getSerial_name());
+        bookDb.setSerial_name(book.getSerial_name());
+        return bookRepository.save(bookDb);
     }
 
-    public List<BookDto> getAll() {
+    public List<Book> getAll() {
         List<Book> data = bookRepository.findAll();
-        return Arrays.asList(modelMapper.map(data, BookDto[].class));
+        return Arrays.asList(modelMapper.map(data, Book[].class));
     }
 }

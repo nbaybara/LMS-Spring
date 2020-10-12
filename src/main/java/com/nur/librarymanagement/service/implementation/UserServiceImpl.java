@@ -1,9 +1,10 @@
-package com.nur.librarymanagement.service;
+package com.nur.librarymanagement.service.implementation;
 
 import com.nur.librarymanagement.dto.AuthorDto;
 import com.nur.librarymanagement.dto.BookDto;
 import com.nur.librarymanagement.dto.UserDto;
 import com.nur.librarymanagement.entity.Author;
+import com.nur.librarymanagement.service.UserService;
 import org.apache.catalina.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

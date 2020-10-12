@@ -9,27 +9,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <title>Add Author</title>
+    <title>Update Book</title>
 </head>
 <body>
 <div th:insert="fragments/header :: header"></div>
 <div class="container">
     <hr>
-    <p class="h4 mb-4">Update Author</p>
+    <p class="h4 mb-4">Update Book</p>
     <div class="card">
         <div class="card-body">
             <div class="col-md-10">
-                <form action="#" th:action="@{/api/author/update-author/{id}(id=${author.id})}" th:object="${author}" method="post">
+                <form action="#" th:action="@{/api/book/update-book/{id}(id=${book.id})}" th:object="${book}" method="post">
                     <div class="row">
                         <div class="form-group col-md-8">
-                            <label for="n_sname" class="col-for-label">Name Surname</label>
-                            <input type="text" th:field="*{n_sname}" class="form-control" id="n_sname"
-                                   placeholder="Author Name"/>
+                            <label for="isbn" class="col-for-label">ISBN</label>
+                            <input type="text" th:field="*{isbn}" class="form-control" id="isbn" placeholder="ISBN"/>
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label for="name" class="col-for-label">Book Name</label>
+                            <input type="text" th:field="*{name}" class="form-control" id="name"
+                                   placeholder="Book Name"/>
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label for="sub_name" class="col-for-label">Subname</label>
+                            <input type="text" th:field="*{sub_name}" class="form-control" id="sub_name"
+                                   placeholder="Subname"/>
                         </div>
                         <div class="form-group col-md-8">
                             <label for="description" class="col-for-label">Description</label>
                             <input type="text" th:field="*{description}" class="form-control" id="description"
                                    placeholder="Description"/>
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label for="serial_name" class="col-for-label">Book Serial Name</label>
+                            <input type="text" th:field="*{serial_name}" class="form-control" id="serial_name"
+                                   placeholder="Serial Name"/>
                         </div>
                         <div class="col-md-6">
                             <input type="submit" class="btn btn-info col-4" value="UPDATE">

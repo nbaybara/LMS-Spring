@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Authors</title>
+</head>
+<body>
+<div th:insert="fragments/header :: header"></div><hr>
+<div class="container">
+    <div class="card">
+        <div class="card-body" th:switch="${books}">
+            <hr>
+            </h3> <a href="/api/book/form-add">
+            <button type="button" class="btn btn-outline-secondary">Add Book</button>
+        </a>
+            <hr>
+            <div class="col-md-12">
+                <h2 th:case="null">No record found !!</h2>
+                <div th:case="*">
+                <table class="table table-striped table-responsive-md">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th>Book ISBN</th>
+                        <th>Book Name</th>
+                        <th>Book Description</th>
+                        <th>Serial Name</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="book : ${books}">
+                        <td th:text="${book.name}"/>
+                        <td th:text="${book.description}"/>
+                        <td th:text="${book.isbn}"/>
+                        <td th:text="${book.serial_name}"/>
+                        <td><a th:href="@{/api/book/updateBook/{id}(id=${book.id})}" class="btn btn-primary"><i
+                                class="fas fa-edit"></i></a></td>
+                        <td><a th:href="@{/api/book/delete/{id}(id=${book.id})}" class="btn btn-primary"><i
+                                class="far fa-trash-alt"></i></i></a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:insert="fragments/footer :: footer"></div>
+</body>
+</html>

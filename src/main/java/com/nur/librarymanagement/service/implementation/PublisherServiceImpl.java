@@ -1,18 +1,16 @@
-package com.nur.librarymanagement.service;
+package com.nur.librarymanagement.service.implementation;
 
 import com.nur.librarymanagement.dto.BookDto;
 import com.nur.librarymanagement.dto.PublisherDto;
+import com.nur.librarymanagement.entity.Author;
 import com.nur.librarymanagement.entity.Publisher;
 import com.nur.librarymanagement.repository.PublisherRepository;
-import com.nur.librarymanagement.util.TPage;
+import com.nur.librarymanagement.service.PublisherService;
+import javassist.NotFoundException;
 import lombok.extern.slf4j.Slf4j;
-import org.h2.engine.Mode;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.modelmapper.ModelMapper;
 
-import java.util.Arrays;
 import java.util.List;
 
 
@@ -37,40 +35,33 @@ public class PublisherServiceImpl implements PublisherService {
     }
 
     @Override
-    public PublisherDto getById(Long id) {
-        Publisher p= publisherRepository.getOne(id);
-        return modelMapper.map(p,PublisherDto.class);
+    public Publisher getById(Long id) {
+        return publisherRepository.getOne(id);
     }
 
+
+    public List<Publisher> getAll() {
+        return publisherRepository.findAll();
+    }
     @Override
-    public TPage<Publisher> getAllPageable(Pageable pageable) {
+    public Boolean delete(Publisher publisher) {
         return null;
     }
 
     public Boolean delete(Long id) {
         publisherRepository.deleteById(id);
-        return true;
-    }
-
-    public List<Publisher> getAll() {
-        return publisherRepository.findAll();
-    }
-
-    @Override
-    public Boolean delete(PublisherDto publisher) {
         return null;
     }
 
     @Override
-    public PublisherDto update(Long id, PublisherDto publisher) {
+    public Publisher update(Long id, Publisher publisher) {
         Publisher publisherDb = publisherRepository.getOne(id);
-        if(publisherDb==null){
-            throw  new IllegalArgumentException("Publisher doesnt exit");
+        if (publisherDb == null) {
+            throw new IllegalArgumentException("Publisher doesnt exit");
         }
         publisherDb.setName(publisher.getName());
         publisherDb.setDescription(publisher.getDescription());
-        publisherRepository.save(publisherDb);
-        return  modelMapper.map(publisherDb,PublisherDto.class);
+        return publisherRepository.save(publisherDb);
 
     }
 }

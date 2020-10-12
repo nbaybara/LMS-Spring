@@ -1,9 +1,8 @@
 package com.nur.librarymanagement.controller;
 
 import com.nur.librarymanagement.dto.AuthorDto;
-import com.nur.librarymanagement.dto.PublisherDto;
 import com.nur.librarymanagement.entity.Author;
-import com.nur.librarymanagement.service.AuthorServiceImpl;
+import com.nur.librarymanagement.service.implementation.AuthorServiceImpl;
 import com.nur.librarymanagement.util.ApiPaths;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -67,10 +66,11 @@ public class AuthorController {
         return "redirect:/api/author/list";
     }
 
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Boolean> delete(@PathVariable(value = "id", required = true) Long id) {
-        return ResponseEntity.ok(authorServiceImpl.delete(id));
+    @RequestMapping("delete/{id}")
+    public String delete(@PathVariable(value = "id", required = true) Long id, Model model) {
+        model.addAttribute("author", authorServiceImpl.getAll());
+        authorServiceImpl.delete(id);
+        return "redirect:/api/author/list";
     }
 
 }
