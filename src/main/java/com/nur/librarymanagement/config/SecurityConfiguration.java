@@ -42,16 +42,15 @@ public class SecurityConfiguration  extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(authenticationProvider());
-        auth.inMemoryAuthentication().withUser("user1").password(passwordEncoder().encode("user1")).roles("user");
+        auth.inMemoryAuthentication().withUser("user1").password(passwordEncoder().encode("user1")).roles("USER");
+        auth.inMemoryAuthentication().withUser("admin").password(passwordEncoder().encode("admin")).roles("ADMIN");
+
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers(
-                "/registration**",
-                "/js/**",
-                "/css/**",
-                "/img/**").permitAll()
+                "/registration**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

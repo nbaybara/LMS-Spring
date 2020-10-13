@@ -12,8 +12,9 @@
 <body>
 <div th:insert="fragments/header :: header"></div>
 <div class="container">
+    <div sec:authorize="hasRole('ADMIN')">
     <hr>
-    <a href="/api/author/addAuthor"><button  type="button" class="btn btn-outline-secondary">Add Author</button></a>
+    <a href="/api/author/addAuthor"><button  type="button" class="btn btn-outline-secondary">Add Author</button></a></div>
     <hr>
     <table class="table table-striped table-responsive-md">
 
@@ -21,8 +22,8 @@
         <tr>
             <th>Author Name</th>
             <th>Description</th>
-            <th>Edit</th>
-            <th>Delete</th>
+            <th sec:authorize="hasRole('ADMIN')">Edit</th>
+            <th sec:authorize="hasRole('ADMIN')">Delete</th>
         </thead>
         </tr>
         </thead>
@@ -30,8 +31,8 @@
         <tr th:each="author : ${authors}">
             <td th:text="${author.n_sname}"/>
             <td th:text="${author.description}"/>
-            <td><a th:href="@{/api/author/updateAuthor/{id}(id=${author.id})}" class="btn btn-primary"><i class="fas fa-edit"></i></a></td>
-            <td><a th:href="@{/api/author/delete/{id}(id=${author.id})}" class="btn btn-primary"><i class="far fa-trash-alt"></i></i></a></td>
+            <td sec:authorize="hasRole('ADMIN')"><a th:href="@{/api/author/updateAuthor/{id}(id=${author.id})}" class="btn btn-primary"><i class="fas fa-edit"></i></a></td>
+            <td sec:authorize="hasRole('ADMIN')"><a th:href="@{/api/author/delete/{id}(id=${author.id})}" class="btn btn-primary"><i class="far fa-trash-alt"></i></i></a></td>
         </tr>
 
         </tr>

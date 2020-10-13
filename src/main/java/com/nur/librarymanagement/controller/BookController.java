@@ -33,9 +33,12 @@ public class BookController {
     private final PublisherServiceImpl publisherServiceImpl;
 
 
-    @GetMapping("/{id}")
-    public Book getById(@PathVariable(value = "id", required = true) Long id) {
-        return bookServiceImpl.getById(id);
+    @RequestMapping("/{id}")
+    public String getById(@PathVariable(value = "id", required = true) Long id , Model model) {
+        final Book book = bookServiceImpl.getById(id);
+        log.info(String.valueOf(book.getId()));
+        model.addAttribute("book", book);
+        return "list-book";
     }
 
     @RequestMapping("/list")
@@ -89,7 +92,7 @@ public class BookController {
         final List<Book> books = bookService.searchBooks(keyword);
         model.addAttribute("books", books);
         model.addAttribute("keyword", keyword);
-        return "list-book";
+        return "list-books";
     }
 
 }

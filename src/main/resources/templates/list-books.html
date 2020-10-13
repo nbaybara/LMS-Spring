@@ -11,37 +11,49 @@
 <body>
 <div th:insert="fragments/header :: header"></div>
 <div class="container">
-    <hr>
-    </h3> <a href="/api/book/form-add"><button  type="button" class="btn btn-outline-secondary">Add Book</button></a>
-    <hr>
-    <table class="table table-striped table-responsive-md">
-        <thead class="thead-dark">
-        <tr>
-            <th>Book ISBN</th>
-            <th>Book Name</th>
-            <th>Book Subname</th>
-            <th>Serial Name</th>
-            <th>Book Author</th>
-            <th>Book Publiser</th>
-            <th>Book Description</th>
-            <th>Edit</th>
-            <th>Delete</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="book : ${books}">
-            <td th:text="${book.isbn}"/>
-            <td th:text="${book.name}"/>
-            <td th:text="${book.sub_name}"/>
-            <td th:text="${book.serial_name}"/>
-            <td th:text="${book.authors[0].n_sname}"/>
-            <td th:text="${book.publishers[0].name}"/>
-            <td th:text="${book.description}"/>
-            <td><a th:href="@{/api/book/updateBook/{id}(id=${book.id})}" class="btn btn-primary"><i class="fas fa-edit"></i></a></td>
-            <td><a th:href="@{/api/book/delete/{id}(id=${book.id})}" class="btn btn-primary"><i class="far fa-trash-alt"></i></i></a></td>
-        </tr>
-        </tbody>
-    </table>
+    <div class="card">
+        <div class="card-body">
+            <div th:switch="${books}" class="container my-5">
+                <div sec:authorize="hasRole('ADMIN')"><hr>
+                    </h3> <a href="/api/book/form-add">
+                    <button type="button" class="btn btn-outline-secondary">Add Book</button>
+                </a><hr>
+                </div>
+                <h2 th:case="null">No record found !!</h2>
+
+                <table class="table table-striped table-responsive-md">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th>Book ISBN</th>
+                        <th>Book Name</th>
+                        <th>Serial Name</th>
+                        <th>Book Author</th>
+                        <th>Book Publisher</th>
+                        <th>Detail</th>
+                        <th sec:authorize="hasRole('ADMIN')">Edit</th>
+                        <th sec:authorize="hasRole('ADMIN')">Delete</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="book : ${books}">
+                        <td th:text="${book.isbn}"/>
+                        <td th:text="${book.name}"/>
+                        <td th:text="${book.serial_name}"/>
+                        <td th:text="${book.authors[0].n_sname}"/>
+                        <td th:text="${book.publishers[0].name}"/>
+                        <td><a th:href="@{/api/book/{id}(id=${book.id})}" class="btn btn-primary"><i
+                                class="fas fa-marker ml-2"></i></a>
+                        </td>
+                        <td><a th:href="@{/api/book/updateBook/{id}(id=${book.id})}" sec:authorize="hasRole('ADMIN')"
+                               class="btn btn-primary"><i class="fas fa-edit"></i></a></td>
+                        <td><a th:href="@{/api/book/delete/{id}(id=${book.id})}" sec:authorize="hasRole('ADMIN')"
+                               class="btn btn-primary"><i class="far fa-trash-alt"></i></i></a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
 <div th:insert="fragments/footer :: footer"></div>
 </body>

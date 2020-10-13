@@ -26,8 +26,10 @@ public class AuthorController {
 
 
     @GetMapping("/{id}")
-    public Author getById(@PathVariable(value = "id", required = true) Long id) {
-        return authorServiceImpl.getById(id);
+    public String getById(@PathVariable(value = "id", required = true) Long id,Model model) {
+        final Author author= authorServiceImpl.getById(id);
+        model.addAttribute("author", author);
+        return "list-authors";
     }
 
     @GetMapping("/list")

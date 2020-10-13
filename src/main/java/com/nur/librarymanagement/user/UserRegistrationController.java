@@ -1,6 +1,7 @@
 package com.nur.librarymanagement.user;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/registration")
 public class UserRegistrationController {
     private UserService userService;
+    private BCryptPasswordEncoder passwordEncoder;
     private UserServiceImpl userServiceImpl;
     public UserRegistrationController(UserService userService, UserServiceImpl userServiceImpl) {
         super();
@@ -31,7 +33,7 @@ public class UserRegistrationController {
 
     @PostMapping
     public String registerUserAccount(@ModelAttribute("user") User user) {
-        userServiceImpl.save(user);
+        userService.save(user);
         return "redirect:/registration?success";
 
     }

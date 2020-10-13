@@ -31,7 +31,7 @@ public class Book {
     @Column(name = "description", length =250)
     private String description;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE,CascadeType.REMOVE})
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "books_publishers", joinColumns = {@JoinColumn(name = "book_id")}, inverseJoinColumns = {
             @JoinColumn(name = "publisher_id")})
     private Set<Publisher> publishers = new HashSet<Publisher>();

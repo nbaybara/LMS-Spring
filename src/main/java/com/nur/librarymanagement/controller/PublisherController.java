@@ -50,6 +50,14 @@ public class PublisherController {
         model.addAttribute("publisher", publisher);
         return "update-publisher";
     }
+    @RequestMapping("/publisher/{id}")
+    public String GetById(@PathVariable("id") Long id, Model model) {
+        final Publisher publisher = publisherServiceImpl.getById(id);
+
+        model.addAttribute("publisher", publisher);
+        return "list-publishers";
+    }
+
 
     @RequestMapping("/update-publisher/{id}")
     public String updatePublisher(@PathVariable("id") Long id, Publisher publisher, BindingResult result, Model model) {
