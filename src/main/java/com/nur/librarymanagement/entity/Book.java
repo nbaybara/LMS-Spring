@@ -41,8 +41,8 @@ public class Book {
             @JoinColumn(name = "author_id") })
     private Set<Author> authors = new HashSet<Author>();
 
-    public Book(String bookName, String sub_name, String serial_name, String isbn, String description) {
-        this.name = bookName;
+    public Book(String book_name, String sub_name, String serial_name, String isbn, String description) {
+        this.name = book_name;
         this.sub_name = sub_name;
         this.serial_name = serial_name;
         this.isbn = isbn;

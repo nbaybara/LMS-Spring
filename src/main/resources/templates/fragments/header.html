@@ -6,15 +6,14 @@
     <title>Home Page</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>LMS</title>
 
 </head>
 
 <body>
 <div th:insert="fragments/header :: header"></div>
-<nav th:fragment= "header" class="navbar navbar-expand-lg navbar-dark" style="background-color: #090824; color: white;">
+<nav th:fragment= "header" class="navbar navbar-expand-lg navbar-dark" style="background-color: #343A40; color: white;">
     <a class="navbar-brand">Library Management System</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -40,9 +39,14 @@
         </ul>
     </div>
     <form th:action="@{/api/book/searchBook}" class="form-inline">
-        <input class="form-control" type="text" placeholder="Search" aria-label="Search" name="keyword" id="keyword" th:value="${keyword}">
-        <input class="btn btn-outline-success active my-2 my-sm-0" type="submit" value="Search" />
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search Book"aria-label="Search" name="keyword" id="keyword" th:value="${keyword}">
+            <span class="input-group-btn">
+        <button class="btn btn-default" type="button" style="background-color: aliceblue" >Go!</button>
+      </span>
+        </div><!-- /input-group -->
     </form>
+
     </div>
 </nav>
 

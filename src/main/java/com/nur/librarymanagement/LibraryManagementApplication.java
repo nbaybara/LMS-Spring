@@ -4,12 +4,14 @@ import com.nur.librarymanagement.entity.Author;
 import com.nur.librarymanagement.entity.Book;
 import com.nur.librarymanagement.entity.Publisher;
 import com.nur.librarymanagement.service.BookService;
+import com.nur.librarymanagement.user.UserServiceImpl;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.core.userdetails.User;
 
 @SpringBootApplication
 public class LibraryManagementApplication {
@@ -56,6 +58,9 @@ public class LibraryManagementApplication {
 			book2.addPublishers(publisher2);
 
 			bookService.save(book2);
+
+
+
 
 		};
 

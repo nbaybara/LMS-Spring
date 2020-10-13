@@ -3,18 +3,15 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <title>Authors</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Books</title>
 </head>
 <body>
 <div th:insert="fragments/header :: header"></div><hr>
 <div class="container">
     <div class="card">
         <div class="card-body" th:switch="${books}">
-            <hr>
             </h3> <a href="/api/book/form-add">
             <button type="button" class="btn btn-outline-secondary">Add Book</button>
         </a>
@@ -27,22 +24,24 @@
                     <tr>
                         <th>Book ISBN</th>
                         <th>Book Name</th>
-                        <th>Book Description</th>
+                        <th>Book Subname</th>
                         <th>Serial Name</th>
+                        <th>Book Description</th>
                         <th>Edit</th>
                         <th>Delete</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr th:each="book : ${books}">
-                        <td th:text="${book.name}"/>
-                        <td th:text="${book.description}"/>
                         <td th:text="${book.isbn}"/>
+                        <td th:text="${book.name}"/>
+                        <td th:text="${book.sub_name}"/>
                         <td th:text="${book.serial_name}"/>
+                        <td th:text="${book.description}"/>
                         <td><a th:href="@{/api/book/updateBook/{id}(id=${book.id})}" class="btn btn-primary"><i
-                                class="fas fa-edit"></i></a></td>
+                                class="fas fa-edit"/></a></td>
                         <td><a th:href="@{/api/book/delete/{id}(id=${book.id})}" class="btn btn-primary"><i
-                                class="far fa-trash-alt"></i></i></a></td>
+                                class="far fa-trash-alt"/></a></td>
                     </tr>
                     </tbody>
                 </table>
