@@ -31,18 +31,18 @@ public class LibraryManagementApplication {
 	public CommandLineRunner initialCreate(BookService bookService) {
 		return (args) -> {
 
-			Book book = new Book("Test book", "Test subname", "Test serial name", "Test isbn", "Test desc");
-			Author author = new Author("Test author name", "Test description");
-			Publisher publisher = new Publisher("Test publisher name", "Test publisher deneme");
+			Book book = new Book("The new Adam D. Mystery", "National Bestseller", "-", "78569", "National Bestseller");
+			Author author = new Author("P.D. James", "Phyllis Dorothy James");
+			Publisher publisher = new Publisher("CAN", "can");
 
 			book.addAuthors(author);
 			book.addPublishers(publisher);
 
 			bookService.save(book);
 
-			Book book1 = new Book("Test isbn1", "Test name1", "Test serial name1", "Test description1", "desc book");
-			Author author1 = new Author("Test author name1", "Test description1");
-			Publisher publisher1 = new Publisher("Test publisher name1", "deneme");
+			Book book1 = new Book("Yakıcı Sır", "-", "-", "12365", "World Literature");
+			Author author1 = new Author("Stefan Zweig", "Austrian writer");
+			Publisher publisher1 = new Publisher("Venedik", "Venedik");
 
 			book1.addAuthors(author1);
 
@@ -50,9 +50,9 @@ public class LibraryManagementApplication {
 
 			bookService.save(book1);
 
-			Book book2 = new Book("Test isbn2", "Test name2", "Test serial name2", "547457422", "desc");
-			Author author2 = new Author("Test author name2", "Test description2");
-			Publisher publisher2 = new Publisher("Test publisher name2", "kkkk");
+			Book book2 = new Book("Bir yumak Mutluluk", "New York Times BestSeller", "-", "547457422", "From D. Macomber");
+			Author author2 = new Author("Debbie Macomber", "Explore World");
+			Publisher publisher2 = new Publisher("MARTI", "Martı");
 
 			book2.addAuthors(author2);
 			book2.addPublishers(publisher2);

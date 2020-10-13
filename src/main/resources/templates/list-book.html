@@ -12,10 +12,11 @@
 <hr>
 <div class="container">
     <div class="card">
+        <div sec:authorize="hasRole('ADMIN')"> </h3> <a href="/api/book/form-add">
+            <button type="button" class="btn btn-outline-secondary">Add Book</button>
+        </a></div>
         <div class="card-body">
-            <div sec:authorize="hasRole('ADMIN')"> </h3> <a href="/api/book/form-add">
-                <button type="button" class="btn btn-outline-secondary">Add Book</button>
-            </a></div>
+
             <hr>
             <div class="col-md-12">
                 <div>

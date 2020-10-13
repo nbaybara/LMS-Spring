@@ -14,10 +14,11 @@
 <body>
 <div th:insert="fragments/header :: header"></div>
 <div class="container">
-    <div sec:authorize="hasRole('ADMIN')"><hr>
+    <hr>
+    <div sec:authorize="hasRole('ADMIN')">
     <a href="/api/author/addAuthor">
         <button type="button" class="btn btn-outline-secondary">Add Publisher</button>
-    </a><hr></div>
+    </a></div><hr>
     <table class="table table-striped table-responsive-md">
         <thead class="thead-dark">
         <tr>
