@@ -6,13 +6,13 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet"href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
     <title>Authors</title>
 </head>
 <body>
 <div th:insert="fragments/header :: header"></div>
 <div class="container">
-    <div sec:authorize="hasRole('ADMIN')">
+    <div sec:authorize="hasRole('USER')">
     <hr>
     <a href="/api/author/addAuthor"><button  type="button" class="btn btn-outline-secondary">Add Author</button></a></div>
     <hr>
@@ -22,8 +22,8 @@
         <tr>
             <th>Author Name</th>
             <th>Description</th>
-            <th sec:authorize="hasRole('ADMIN')">Edit</th>
-            <th sec:authorize="hasRole('ADMIN')">Delete</th>
+            <th sec:authorize="hasRole('USER')">Edit</th>
+            <th sec:authorize="hasRole('USER')">Delete</th>
         </thead>
         </tr>
         </thead>
@@ -31,8 +31,8 @@
         <tr th:each="author : ${authors}">
             <td th:text="${author.n_sname}"/>
             <td th:text="${author.description}"/>
-            <td sec:authorize="hasRole('ADMIN')"><a th:href="@{/api/author/updateAuthor/{id}(id=${author.id})}" class="btn btn-primary"><i class="fas fa-edit"></i></a></td>
-            <td sec:authorize="hasRole('ADMIN')"><a th:href="@{/api/author/delete/{id}(id=${author.id})}" class="btn btn-primary"><i class="far fa-trash-alt"></i></i></a></td>
+            <td sec:authorize="hasRole('USER')"><a th:href="@{/api/author/updateAuthor/{id}(id=${author.id})}" class="btn btn-primary"><i class="fas fa-edit"></i></a></td>
+            <td sec:authorize="hasRole('USER')"><a th:href="@{/api/author/delete/{id}(id=${author.id})}" class="btn btn-primary"><i class="far fa-trash-alt"/></a></td>
         </tr>
 
         </tr>

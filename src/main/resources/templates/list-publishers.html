@@ -6,8 +6,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-
+    <link rel="stylesheet"href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
 
     <title>Publishers</title>
 </head>
@@ -15,7 +14,7 @@
 <div th:insert="fragments/header :: header"></div>
 <div class="container">
     <hr>
-    <div sec:authorize="hasRole('ADMIN')">
+    <div sec:authorize="hasRole('USER')">
     <a href="/api/author/addAuthor">
         <button type="button" class="btn btn-outline-secondary">Add Publisher</button>
     </a></div><hr>
@@ -24,18 +23,16 @@
         <tr>
             <th>Publisher Name</th>
             <th>Description</th>
-            <th  sec:authorize="hasRole('ADMIN')">Edit</th>
-            <th  sec:authorize="hasRole('ADMIN')">Delete</th>
+            <th  sec:authorize="hasRole('USER')">Edit</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="publisher : ${publishers}">
             <td th:text="${publisher.name}"/>
             <td th:text="${publisher.description}"/>
-            <td><a th:href="@{/api/publisher/updatePublisher/{id}(id=${publisher.id})}"  sec:authorize="hasRole('ADMIN')"class="btn btn-primary"><i
-                    class="fas fa-edit"></i></a></td>
-            <td><a th:href="@{/api/publisher/delete/{id}(id=${publisher.id})}"  sec:authorize="hasRole('ADMIN')"class="btn btn-primary"><i
-                    class="far fa-trash-alt"></i></a></td>
+            <td><a th:href="@{/api/publisher/updatePublisher/{id}(id=${publisher.id})}"  sec:authorize="hasRole('USER')"class="btn btn-primary"><i
+                    class="fas fa-edit"/></a></td>
+
         </tr>
         </tbody>
     </table>

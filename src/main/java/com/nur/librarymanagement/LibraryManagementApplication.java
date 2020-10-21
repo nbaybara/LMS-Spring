@@ -56,9 +56,15 @@ public class LibraryManagementApplication {
 
 			book2.addAuthors(author2);
 			book2.addPublishers(publisher2);
-
 			bookService.save(book2);
 
+			Book book3 = new Book("Masumiyet Müzesi", "Aşk ve Müze üzerine Yazarın son sözüyle", "-", "978-975-08-2614-6", "Hayatımın en mutlu anıymış, bilmiyordum.");
+			Author author3 = new Author("Orhan Pamuk", "Nobel ödüllü yazar");
+			Publisher publisher3 = new Publisher("YKY", "YKY");
+
+			book3.addAuthors(author3);
+			book3.addPublishers(publisher3);
+			bookService.save(book3);
 
 
 
