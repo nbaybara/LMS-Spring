@@ -1,5 +1,6 @@
 # LMS
-=> See the website on Here the link => https://lms-systemm.herokuapp.com/
+=>You can see the website on  => https://lms-systemm.herokuapp.com/
+
 This is a library management system project. I developed a web application by using Spring Boot.
 Tech Stack
   - Spring Boot
