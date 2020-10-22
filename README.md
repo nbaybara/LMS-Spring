@@ -24,8 +24,8 @@ http://localhost:8081
 
 
 # IMAGES
-<img src="https://github.com/nbaybara/LMS-Spring/blob/master/images/Screenshot_22.png">
+<img widtg="180" src="https://github.com/nbaybara/LMS-Spring/blob/master/images/Screenshot_22.png">
+<img src="https://github.com/nbaybara/LMS-Spring/blob/master/images/Screenshot_25.png">
 <img src="https://github.com/nbaybara/LMS-Spring/blob/master/images/Screenshot_23.png">
 <img src="https://github.com/nbaybara/LMS-Spring/blob/master/images/Screenshot_24.png">
-<img src="https://github.com/nbaybara/LMS-Spring/blob/master/images/Screenshot_25.png">
 
