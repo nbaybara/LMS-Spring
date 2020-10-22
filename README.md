@@ -1,5 +1,7 @@
 # LMS
 =>You can see the website on  => https://lms-systemm.herokuapp.com/
+  Default User => Username: user1, pwd: user1
+  Default Admin User => username: admin, pwd: admin
 
 This is a library management system project. I developed a web application by using Spring Boot.
 Tech Stack
@@ -19,7 +21,11 @@ Tech Stack
 http://localhost:8081
 # RUN
  mvn clean install && mvn --projects backend spring-boot:run
-Default User => Username: user1, pwd: user1
-Default Admin User => username: admin, pwd: admin
 
+
+# IMAGES
+https://github.com/nbaybara/LMS-Spring/blob/master/images/Screenshot_22.png
+https://github.com/nbaybara/LMS-Spring/blob/master/images/Screenshot_23.png
+https://github.com/nbaybara/LMS-Spring/blob/master/images/Screenshot_24.png
+https://github.com/nbaybara/LMS-Spring/blob/master/images/Screenshot_25.png
 
