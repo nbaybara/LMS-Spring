@@ -1,5 +1,6 @@
 # LMS
-=>You can see the website on  => https://lms-systemm.herokuapp.com/
+=>You can see the website on  => https://lms-systemng.herokuapp.com/
+
   Default User => Username: user1, pwd: user1
   Default Admin User => username: admin, pwd: admin
 
