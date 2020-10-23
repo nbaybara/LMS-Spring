@@ -9,6 +9,7 @@ Tech Stack
   - Spring Boot
   - Spring Data Jpa
   - Spring Security
+  -Thymelaf
   - H2 Db
   - Bootstrap
 
