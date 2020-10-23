@@ -43,7 +43,7 @@
             <h1>Registration</h1>
             <form th:action="@{registration}" method="post" th:object="${user}">
                 <div class="form-group">
-                    <label class="control-label" for="username"> User Name </label>
+                    <label class="control-label" for="username"> Username </label>
                     <input id="username" class="form-control" th:field="*{username}"
                            required autofocus="autofocus"/>
                 </div>
